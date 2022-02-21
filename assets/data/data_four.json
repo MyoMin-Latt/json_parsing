@@ -1,0 +1,14 @@
+{
+    "id": 8910,
+    "name": "iPad Pro",
+    "images": [
+        {
+            "id" : 1111,
+            "name": "ipad_pro_1111.jpg"
+        },
+        {
+            "id" : 2222,
+            "name": "ipad_pro_2222.jpg"
+        }
+    ]
+}

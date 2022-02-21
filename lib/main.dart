@@ -3,7 +3,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:json_parsing01/model/product.dart';
 import 'package:json_parsing01/model/shape_two.dart';
+
+import 'model/product_two.dart';
 
 void main(){
   runApp(MyApp());
@@ -23,16 +26,17 @@ class MyApp extends StatelessWidget {
         body: Text(''),
         floatingActionButton: FloatingActionButton(
           onPressed: ()async{
-            var responseBody = await rootBundle.loadString('assets/data/data_three.json');
+            var responseBody = await rootBundle.loadString('assets/data/data_four.json');
             print(responseBody); // json
             Map<String, dynamic> map = jsonDecode(responseBody); // json decode to map
             print(map); // map
-            MyShape shape = MyShape.fromJson(map);
-            print(shape);
-            print(shape.shape);
-            print(shape.property);
-            print(shape.property.height);
-            print(shape.toJson());
+            MyProduct product = MyProduct.fromJson(map);
+            print(product);
+            print(product.name);
+            print(product.images);
+            print(product.images[0].id);
+            print(product.toJson());
+
           },
           child: Icon(Icons.save),),
       ),
