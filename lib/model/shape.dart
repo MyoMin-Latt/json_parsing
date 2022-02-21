@@ -18,8 +18,8 @@ class Shape{
 }
 
 class Property{
-  String width;
-  String height;
+  double width;
+  double height;
   Property(this.width, this.height);
   factory Property.fromJson(Map<String, dynamic> json){
     return Property(json["width"], json["height"]);

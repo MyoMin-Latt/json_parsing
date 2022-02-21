@@ -3,10 +3,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:json_parsing01/model/city.dart';
-import 'package:json_parsing01/model/city_two.dart';
-import 'package:json_parsing01/model/student.dart';
-import 'package:json_parsing01/model/student_two.dart';
+import 'package:json_parsing01/model/shape_two.dart';
 
 void main(){
   runApp(MyApp());
@@ -26,15 +23,16 @@ class MyApp extends StatelessWidget {
         body: Text(''),
         floatingActionButton: FloatingActionButton(
           onPressed: ()async{
-            var parsedJson = await rootBundle.loadString('assets/data/data_two.json');
-            print(parsedJson); // Json output
-            Map<String, dynamic> map = jsonDecode(parsedJson); 
-            print(map); // Map Output
-            MyCity myCity = MyCity.fromJson(map);
-            print(myCity);
-            print(myCity.city);
-            print(myCity.streets);
-            print(myCity.toJson());
+            var responseBody = await rootBundle.loadString('assets/data/data_three.json');
+            print(responseBody); // json
+            Map<String, dynamic> map = jsonDecode(responseBody); // json decode to map
+            print(map); // map
+            MyShape shape = MyShape.fromJson(map);
+            print(shape);
+            print(shape.shape);
+            print(shape.property);
+            print(shape.property.height);
+            print(shape.toJson());
           },
           child: Icon(Icons.save),),
       ),
