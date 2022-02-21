@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:json_parsing01/model/product.dart';
 import 'package:json_parsing01/model/shape_two.dart';
+import 'package:json_parsing01/model/weather.dart';
 
 import 'model/product_two.dart';
 
@@ -26,16 +27,21 @@ class MyApp extends StatelessWidget {
         body: Text(''),
         floatingActionButton: FloatingActionButton(
           onPressed: ()async{
-            var responseBody = await rootBundle.loadString('assets/data/data_four.json');
+            var responseBody = await rootBundle.loadString('assets/data/weather.json');
             print(responseBody); // json
             Map<String, dynamic> map = jsonDecode(responseBody); // json decode to map
             print(map); // map
-            MyProduct product = MyProduct.fromJson(map);
-            print(product);
-            print(product.name);
-            print(product.images);
-            print(product.images[0].id);
-            print(product.toJson());
+            Weather weather = Weather.fromJson(jsonDecode(responseBody));
+            print(weather);
+            print(weather.coord);
+            print(weather.coord.longitude);
+            print(weather.weatherDetail);
+            print(weather.weatherDetail[0].description);
+            print(weather.toJson());
+            print(weather.coord.toJson());
+            print(weather.weatherDetail[0].toJson());
+
+            
 
           },
           child: Icon(Icons.save),),
