@@ -1,8 +1,10 @@
+// Error => import 'package:json_serializable/builder.dart';
 
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:json_parsing01/model/city.dart';
+import 'package:json_parsing01/model/city_two.dart';
 import 'package:json_parsing01/model/student.dart';
 import 'package:json_parsing01/model/student_two.dart';
 
@@ -15,6 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -23,14 +26,15 @@ class MyApp extends StatelessWidget {
         body: Text(''),
         floatingActionButton: FloatingActionButton(
           onPressed: ()async{
-            var parsedJson = await rootBundle.loadString('assets/data/data_one.json');
+            var parsedJson = await rootBundle.loadString('assets/data/data_two.json');
             print(parsedJson); // Json output
             Map<String, dynamic> map = jsonDecode(parsedJson); 
             print(map); // Map Output
-            MyStudent student = MyStudent.fromJson(map);
-            print(student);
-            print(student.id);
-            print(student.toJson());
+            MyCity myCity = MyCity.fromJson(map);
+            print(myCity);
+            print(myCity.city);
+            print(myCity.streets);
+            print(myCity.toJson());
           },
           child: Icon(Icons.save),),
       ),
